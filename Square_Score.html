@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>Square Random Position</title>
+    </head>
+    <style>
+        #div1{
+            border-color: black;
+            border-radius: 20%;
+            border-width: 5px;
+            background-color: rgb(172, 33, 2);
+            height: 200px;
+            width:200px;
+        }
+        #l1{
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 18px;
+        }
+    </style>
+    <script>
+        var count=0;
+        function squr(){
+            count+=1;
+            document.getElementById("l1").innerHTML="Total Score - "+count;
+            document.getElementById("div1").style.marginLeft=Math.random()*600+"px";
+           document.getElementById("div1").style.marginTop=Math.random()*300+"px";
+        }
+        var seconds=60;
+        function timer()
+        {
+            seconds--;
+             var min=Math.floor(seconds/60);
+            var rem= seconds%60;
+            if(rem<10)
+            rem="0"+rem;
+            document.getElementById("timer").innerHTML="time : "+min+":"+rem;
+            if(seconds==0)
+            {
+                clearTimeout(timerId);
+                window.alert("game over");
+                location.reload();
+            }
+        }
+        var timerId = setInterval(timer,1000);
+    </script>
+    <body>
+        <div>
+        <h3>Touch the Square see the score</h3><br>
+        <p id="timer">Time : 1:00</p>
+        <p id="l1"></p><br>
+        </div>
+        <div onclick="squr()" id="div1"></div>
+    </body>
+</html>
